@@ -20,4 +20,5 @@ COPY . .
 EXPOSE 8080
 
 # 启动命令 - 使用 Railway 提供的 PORT
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT:-8080}"]
+# 使用 sh -c 来支持环境变量
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
