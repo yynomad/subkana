@@ -1,0 +1,54 @@
+[
+  {
+    "id": "n4_nakereba_naranai",
+    "name": "〜なければならない",
+    "level": "N4",
+    "meaning": "必须……",
+    "pattern": [
+      {
+        "pos": "動詞",
+        "conj": "未然形"
+      },
+      {
+        "lemma": "ない"
+      },
+      {
+        "surface": "ば"
+      },
+      {
+        "lemma": "なる"
+      },
+      {
+        "lemma": "ない"
+      }
+    ]
+  },
+  {
+    "id": "n4_nakereba_narimasen",
+    "name": "〜なければなりません",
+    "level": "N4",
+    "meaning": "必须……（敬语）",
+    "pattern": [
+      {
+        "pos": "動詞",
+        "conj": "未然形"
+      },
+      {
+        "lemma": "ない"
+      },
+      {
+        "surface": "ば"
+      },
+      {
+        "lemma": "なる"
+      },
+      {
+        "lemma": "ます"
+      },
+      {
+        "lemma": "ん"
+      }
+    ]
+  }
+]
+

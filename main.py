@@ -1,24 +1,33 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import List
-import sudachipy
-from sudachipy import tokenizer
+"""
+应用启动入口
 
-app = FastAPI(title="Japanese Tokenizer API")
+使用 uvicorn 启动 FastAPI 应用
+"""
 
-# 初始化 Sudachi 分词器（使用 A 模式：最细粒度）
-tokenizer_obj = tokenizer.Tokenizer()
-mode = tokenizer.Tokenizer.SplitMode.C  # C 模式：平衡（推荐）
+import os
+import uvicorn
+from app.config import get_settings
 
-class SentenceRequest(BaseModel):
-    text: str
+# 设置 MeCab 环境变量（macOS Homebrew 兼容性）
+if os.name == 'posix':  # Unix-like systems
+    possible_mecabrc_paths = [
+        '/opt/homebrew/etc/mecabrc',  # macOS Homebrew
+        '/usr/local/etc/mecabrc',    # macOS/Homebrew legacy
+        '/etc/mecabrc',              # Linux
+    ]
 
-@app.post("/tokenize")
-def tokenize(request: SentenceRequest) -> List[str]:
-    tokens = tokenizer_obj.tokenize(request.text, mode)
-    words = [token.surface() for token in tokens]
-    return words
+    for path in possible_mecabrc_paths:
+        if os.path.exists(path):
+            os.environ['MECABRC'] = path
+            print(f"设置 MECABRC={path}")
+            break
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+if __name__ == "__main__":
+    settings = get_settings()
+    uvicorn.run(
+        "app.main:app",
+        host=settings.HOST,
+        port=settings.PORT,
+        reload=settings.DEBUG,
+        log_level=settings.LOG_LEVEL.lower()
+    )

@@ -4,9 +4,12 @@ FROM python:3.11-slim
 # 设置工作目录
 WORKDIR /app
 
-# 安装系统依赖
+# 安装系统依赖（包括 MeCab）
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    mecab \
+    libmecab-dev \
+    mecab-ipadic-utf8 \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制 requirements.txt 并安装 Python 依赖
@@ -21,4 +24,4 @@ EXPOSE 8080
 
 # 启动命令 - 使用 Railway 提供的 PORT
 # 使用 sh -c 来支持环境变量
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
