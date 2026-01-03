@@ -57,11 +57,11 @@ class AnalysisService:
         # 2. 句型匹配
         grammar_matches = self.grammar_engine.match(tokens)
         
-        # 3. 添加词汇等级到 tokens
-        tokens_with_level = []
+        # 3. 添加词汇信息到 tokens（等级、读音、意思、罗马音）
+        tokens_with_info = []
         for token in tokens:
-            token.jlpt_level = self.vocabulary_mapper.get_level(token)
-            tokens_with_level.append(token)
+            enriched_token = self.vocabulary_mapper.enrich_token(token)
+            tokens_with_info.append(enriched_token)
         
         # 4. 转换 grammar_matches 为 GrammarPattern
         grammar_patterns = []
@@ -81,7 +81,7 @@ class AnalysisService:
         return AnalyzeResponse(
             sentence=sentence,
             grammar_patterns=grammar_patterns,
-            tokens=tokens_with_level
+            tokens=tokens_with_info
         )
     
     @staticmethod

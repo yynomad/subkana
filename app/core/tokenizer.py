@@ -22,14 +22,21 @@ logger = logging.getLogger(__name__)
 class MeCabTokenizer:
     """封装 MeCab 形态素分析器"""
     
-    def __init__(self, dict_type: str = "ipadic"):
+    def __init__(self, dict_type: str = "ipadic", mecab_rc_path: str = None):
         """
         初始化 MeCab Tagger
         
         Args:
             dict_type: 词典类型（ipadic, unidic 等）
+            mecab_rc_path: MeCab 配置文件路径（可选）
         """
         try:
+            # 设置 MECABRC 环境变量（如果提供）
+            if mecab_rc_path:
+                import os
+                os.environ['MECABRC'] = mecab_rc_path
+                logger.info(f"设置 MECABRC={mecab_rc_path}")
+            
             self.tagger = MeCab.Tagger()
             logger.info(f"MeCab 初始化成功，词典类型: {dict_type}")
         except RuntimeError as e:

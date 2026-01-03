@@ -29,7 +29,10 @@ def init_services():
     settings = get_settings()
     
     try:
-        _tokenizer = MeCabTokenizer(dict_type=settings.MECAB_DICT_TYPE)
+        _tokenizer = MeCabTokenizer(
+            dict_type=settings.MECAB_DICT_TYPE,
+            mecab_rc_path=settings.MECAB_RC_PATH
+        )
         logger.info("MeCabTokenizer 初始化成功")
     except Exception as e:
         logger.error(f"MeCabTokenizer 初始化失败: {e}")

@@ -133,7 +133,7 @@ class GrammarRuleEngine:
         matched_indices = []
         current_idx = start_idx
         
-        for condition in pattern:
+        for condition_idx, condition in enumerate(pattern):
             # 如果已经超出 token 范围，匹配失败
             if current_idx >= len(tokens):
                 return None

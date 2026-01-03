@@ -72,4 +72,5 @@ async def health() -> Dict[str, Any]:
         },
         "analysis_service": _analysis_service is not None
     }
+    
 

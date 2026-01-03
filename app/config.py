@@ -39,6 +39,7 @@ class Settings(BaseSettings):
     
     # MeCab 配置
     MECAB_DICT_TYPE: str = "ipadic"  # ipadic, unidic, etc.
+    MECAB_RC_PATH: str = "/opt/homebrew/etc/mecabrc"  # MeCab 配置文件路径
     
     model_config = SettingsConfigDict(
         env_file=".env",
