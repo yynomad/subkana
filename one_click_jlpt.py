@@ -17,8 +17,8 @@ from typing import Dict, List, Any
 import time
 
 print("="*70)
-print("  🎯 JLPT N1-N5 词汇获取工具")
-print("  数据源: jlpt-vocab-api")
+print("  🎯 JLPT N1-N5 数据一键获取工具")
+print("  数据源: Hanabira.org + jlpt-vocab-api")
 print("="*70)
 print()
 
@@ -87,7 +87,7 @@ def download_grammar_data():
 # =============================================================================
 
 def convert_grammar(all_grammar: Dict) -> List[Dict]:
-    """转换语法数据"""
+    """转换语法数据（使用英文解释）"""
     print("\n🔄 步骤 2/3: 转换语法数据")
     print("-" * 70)
     
@@ -107,18 +107,20 @@ def convert_grammar(all_grammar: Dict) -> List[Dict]:
             if not isinstance(entry, dict):
                 continue
             
-            # 尝试多个可能的字段名
+            # 尝试多个可能的字段名（优先使用title）
             grammar_point = (
-                entry.get('grammar_point') or
                 entry.get('title') or
+                entry.get('grammar_point') or
                 entry.get('grammar') or
                 entry.get('pattern') or
                 ""
             ).strip()
             
+            # 优先使用英文解释
             meaning = (
-                entry.get('meaning') or
                 entry.get('short_explanation') or
+                entry.get('long_explanation') or
+                entry.get('meaning') or
                 entry.get('explanation') or
                 entry.get('translation') or
                 ""
@@ -129,19 +131,30 @@ def convert_grammar(all_grammar: Dict) -> List[Dict]:
             if not grammar_point:
                 continue
             
-            # 提取例句
+            # 提取例句（使用jp和en字段）
             examples = []
-            for key in ['example_sentences', 'examples', 'sentences']:
-                if key in entry and isinstance(entry[key], list):
-                    for ex in entry[key][:2]:  # 最多2个例句
-                        if isinstance(ex, dict):
-                            examples.append({
-                                "japanese": ex.get('japanese', ex.get('sentence', '')),
-                                "english": ex.get('translation', ex.get('english', '')),
-                            })
-                        elif isinstance(ex, str):
-                            examples.append({"japanese": ex, "english": ""})
-                    break
+            if 'examples' in entry and isinstance(entry['examples'], list):
+                for ex in entry['examples'][:2]:  # 最多2个例句
+                    if isinstance(ex, dict):
+                        examples.append({
+                            "japanese": ex.get('jp', ex.get('japanese', ex.get('sentence', ''))),
+                            "english": ex.get('en', ex.get('english', ex.get('translation', ''))),
+                        })
+                    elif isinstance(ex, str):
+                        examples.append({"japanese": ex, "english": ""})
+            else:
+                # 兼容其他字段名
+                for key in ['example_sentences', 'sentences']:
+                    if key in entry and isinstance(entry[key], list):
+                        for ex in entry[key][:2]:
+                            if isinstance(ex, dict):
+                                examples.append({
+                                    "japanese": ex.get('japanese', ex.get('sentence', '')),
+                                    "english": ex.get('translation', ex.get('english', '')),
+                                })
+                            elif isinstance(ex, str):
+                                examples.append({"japanese": ex, "english": ""})
+                        break
             
             # 构建规则
             rule = {
@@ -166,7 +179,7 @@ def convert_grammar(all_grammar: Dict) -> List[Dict]:
 
 def download_vocabulary():
     """下载词汇数据 - 包含完整信息（发音、释义、例句）"""
-    print("\n📚 获取词汇数据")
+    print("\n📚 步骤 3/3: 获取词汇数据")
     print("-" * 70)
     
     vocabulary = {}
@@ -673,12 +686,11 @@ def save_files(grammar: List[Dict], vocabulary: Dict):
 
 def main():
     try:
-        # 步骤1: 下载语法 (暂时注释掉)
-        # grammar_data = download_grammar_data()
+        # 步骤1: 下载语法
+        grammar_data = download_grammar_data()
         
-        # 步骤2: 转换语法 (暂时注释掉)
-        # grammar_rules = convert_grammar(grammar_data)
-        grammar_rules = []  # 临时使用空列表
+        # 步骤2: 转换语法
+        grammar_rules = convert_grammar(grammar_data)
         
         # 步骤3: 获取词汇
         vocabulary = download_vocabulary()
