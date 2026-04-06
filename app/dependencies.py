@@ -9,7 +9,7 @@ from functools import lru_cache
 
 from app.config import get_settings
 from app.core.tokenizer import MeCabTokenizer
-from app.core.grammar_engine import GrammarRuleEngine
+from app.core.grammar_engine_optimized import GrammarRuleEngine
 from app.core.vocabulary import VocabularyLevelMapper
 from app.core.service import AnalysisService
 

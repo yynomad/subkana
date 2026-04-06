@@ -34,12 +34,12 @@ class Settings(BaseSettings):
     LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
     # 文件路径配置
-    GRAMMAR_RULES_FILE: str = "data/grammar_rules.json"
+    GRAMMAR_RULES_FILE: str = "data/grammar_rules_complete.json"  # 完整的 N5-N1 语法规则
     VOCABULARY_LEVELS_FILE: str = "data/vocabulary_levels.json"
     
     # MeCab 配置
     MECAB_DICT_TYPE: str = "ipadic"  # ipadic, unidic, etc.
-    MECAB_RC_PATH: str = "/opt/homebrew/etc/mecabrc"  # MeCab 配置文件路径
+    MECAB_RC_PATH: str = "/etc/mecabrc"  # MeCab 配置文件路径
     
     model_config = SettingsConfigDict(
         env_file=".env",

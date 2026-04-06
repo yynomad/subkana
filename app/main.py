@@ -27,7 +27,7 @@ from app.logging_config import setup_logging
 # 设置 MeCab 环境变量（macOS Homebrew 兼容性）
 if os.name == 'posix':  # Unix-like systems
     possible_mecabrc_paths = [
-        '/opt/homebrew/etc/mecabrc',  # macOS Homebrew
+        '/etc/mecabrc',  # Linux/WSL
         '/usr/local/etc/mecabrc',    # macOS/Homebrew legacy
         '/etc/mecabrc',              # Linux
     ]

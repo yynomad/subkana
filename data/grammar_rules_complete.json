@@ -1,0 +1,1131 @@
+[
+  {
+    "id": "n5_desu",
+    "name": "〜です",
+    "level": "N5",
+    "meaning": "是……（礼貌体判断词）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "です"}
+    ]
+  },
+  {
+    "id": "n5_masu",
+    "name": "〜ます",
+    "level": "N5",
+    "meaning": "做……（礼貌体动词词尾）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "ます"}
+    ]
+  },
+  {
+    "id": "n5_masu",
+    "name": "〜ました",
+    "level": "N5",
+    "meaning": "做了……（过去式）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "ました"}
+    ]
+  },
+  {
+    "id": "n5_nai",
+    "name": "〜ない",
+    "level": "N5",
+    "meaning": "不……（否定形式）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n5_ta",
+    "name": "〜た",
+    "level": "N5",
+    "meaning": "做了……（动词过去式）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "た"}
+    ]
+  },
+  {
+    "id": "n5_te_form",
+    "name": "〜て",
+    "level": "N5",
+    "meaning": "……（て形，表示中顿、方式等）",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"}
+    ]
+  },
+  {
+    "id": "n5_to",
+    "name": "〜と",
+    "level": "N5",
+    "meaning": "和……；一……就……",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"}
+    ]
+  },
+  {
+    "id": "n5_mo",
+    "name": "〜も",
+    "level": "N5",
+    "meaning": "也……",
+    "pattern": [
+      {"pos": "助詞", "surface": "も"}
+    ]
+  },
+  {
+    "id": "n5_ga",
+    "name": "〜が",
+    "level": "N5",
+    "meaning": "……（主语标记）；但是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "が"}
+    ]
+  },
+  {
+    "id": "n5_wo",
+    "name": "〜を",
+    "level": "N5",
+    "meaning": "把……（宾语标记）",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"}
+    ]
+  },
+  {
+    "id": "n5_ni",
+    "name": "〜に",
+    "level": "N5",
+    "meaning": "在……；向……；对……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n5_de",
+    "name": "〜で",
+    "level": "N5",
+    "meaning": "在……；用……；以……",
+    "pattern": [
+      {"pos": "助詞", "surface": "で"}
+    ]
+  },
+  {
+    "id": "n5_kara",
+    "name": "〜から",
+    "level": "N5",
+    "meaning": "从……；因为……",
+    "pattern": [
+      {"pos": "助詞", "surface": "から"}
+    ]
+  },
+  {
+    "id": "n5_made",
+    "name": "〜まで",
+    "level": "N5",
+    "meaning": "到……；直到……",
+    "pattern": [
+      {"pos": "助詞", "surface": "まで"}
+    ]
+  },
+  {
+    "id": "n5_no",
+    "name": "〜の",
+    "level": "N5",
+    "meaning": "……的；……的（名词化）",
+    "pattern": [
+      {"pos": "助詞", "surface": "の"}
+    ]
+  },
+  {
+    "id": "n5_yo",
+    "name": "〜よ",
+    "level": "N5",
+    "meaning": "……哦（强调语气）",
+    "pattern": [
+      {"pos": "助詞", "surface": "よ"}
+    ]
+  },
+  {
+    "id": "n5_ne",
+    "name": "〜ね",
+    "level": "N5",
+    "meaning": "……呢；……吧（确认语气）",
+    "pattern": [
+      {"pos": "助詞", "surface": "ね"}
+    ]
+  },
+  {
+    "id": "n5_ka",
+    "name": "〜か",
+    "level": "N5",
+    "meaning": "……吗？（疑问语气）",
+    "pattern": [
+      {"pos": "助詞", "surface": "か"}
+    ]
+  },
+  {
+    "id": "n5_wa",
+    "name": "〜は",
+    "level": "N5",
+    "meaning": "……（主题标记）",
+    "pattern": [
+      {"pos": "助詞", "surface": "は"}
+    ]
+  },
+  {
+    "id": "n5_aru",
+    "name": "〜がある",
+    "level": "N5",
+    "meaning": "有……（无生命）",
+    "pattern": [
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "動詞", "lemma": "ある"}
+    ]
+  },
+  {
+    "id": "n5_iru",
+    "name": "〜がいる",
+    "level": "N5",
+    "meaning": "有……（有生命）",
+    "pattern": [
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "動詞", "lemma": "いる"}
+    ]
+  },
+  {
+    "id": "n5_tai",
+    "name": "〜たい",
+    "level": "N5",
+    "meaning": "想……（愿望）",
+    "pattern": [
+      {"pos": "助動詞", "surface": "たい"}
+    ]
+  },
+  {
+    "id": "n4_node",
+    "name": "〜ので",
+    "level": "N4",
+    "meaning": "因为……所以……（客观原因）",
+    "pattern": [
+      {"pos": "助詞", "surface": "ので"}
+    ]
+  },
+  {
+    "id": "n4_kara",
+    "name": "〜から",
+    "level": "N4",
+    "meaning": "因为……所以……（主观原因）",
+    "pattern": [
+      {"pos": "助詞", "surface": "から"}
+    ]
+  },
+  {
+    "id": "n4_kedo",
+    "name": "〜けど",
+    "level": "N4",
+    "meaning": "虽然……但是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "けど"}
+    ]
+  },
+  {
+    "id": "n4_keredomo",
+    "name": "〜けれども",
+    "level": "N4",
+    "meaning": "虽然……但是……（正式）",
+    "pattern": [
+      {"pos": "助詞", "surface": "けれども"}
+    ]
+  },
+  {
+    "id": "n4_tari",
+    "name": "〜たり〜たり",
+    "level": "N4",
+    "meaning": "又……又……；时而……时而……",
+    "pattern": [
+      {"pos": "助詞", "surface": "たり"}
+    ]
+  },
+  {
+    "id": "n4_nakereba_naranai",
+    "name": "〜なければならない",
+    "level": "N4",
+    "meaning": "必须……",
+    "pattern": [
+      {"pos": "助動詞", "conj": "仮定形"},
+      {"pos": "助詞", "surface": "ば"},
+      {"pos": "動詞", "lemma": "なる"}
+    ]
+  },
+  {
+    "id": "n4_nakereba_ikenai",
+    "name": "〜なければいけない",
+    "level": "N4",
+    "meaning": "必须……（口语）",
+    "pattern": [
+      {"pos": "助動詞", "conj": "仮定形"},
+      {"pos": "助詞", "surface": "ば"},
+      {"pos": "動詞", "lemma": "いけない"}
+    ]
+  },
+  {
+    "id": "n4_nakute_wa_ikenai",
+    "name": "〜なくてはいけない",
+    "level": "N4",
+    "meaning": "必须……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "なくて"},
+      {"pos": "助詞", "surface": "は"},
+      {"pos": "動詞", "lemma": "いけない"}
+    ]
+  },
+  {
+    "id": "n4_koto_ga_dekiru",
+    "name": "〜ことができる",
+    "level": "N4",
+    "meaning": "能够……；会……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "動詞", "lemma": "できる"}
+    ]
+  },
+  {
+    "id": "n4_youni",
+    "name": "〜ように",
+    "level": "N4",
+    "meaning": "为了……；像……一样",
+    "pattern": [
+      {"pos": "名詞", "surface": "よう"},
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n4_tame",
+    "name": "〜ため",
+    "level": "N4",
+    "meaning": "为了……；因为……",
+    "pattern": [
+      {"pos": "名詞", "surface": "ため"}
+    ]
+  },
+  {
+    "id": "n4_toki",
+    "name": "〜とき",
+    "level": "N4",
+    "meaning": "……的时候",
+    "pattern": [
+      {"pos": "名詞", "surface": "とき"}
+    ]
+  },
+  {
+    "id": "n4_ba",
+    "name": "〜ば",
+    "level": "N4",
+    "meaning": "如果……就……（假定形）",
+    "pattern": [
+      {"pos": "助詞", "surface": "ば"}
+    ]
+  },
+  {
+    "id": "n4_tara",
+    "name": "〜たら",
+    "level": "N4",
+    "meaning": "如果……的话；……之后",
+    "pattern": [
+      {"pos": "助動詞", "surface": "たら"}
+    ]
+  },
+  {
+    "id": "n4_nara",
+    "name": "〜なら",
+    "level": "N4",
+    "meaning": "如果是……的话",
+    "pattern": [
+      {"pos": "助詞", "surface": "なら"}
+    ]
+  },
+  {
+    "id": "n4_mai",
+    "name": "〜まい",
+    "level": "N4",
+    "meaning": "不……；不会……吧",
+    "pattern": [
+      {"pos": "助動詞", "surface": "まい"}
+    ]
+  },
+  {
+    "id": "n4_rashii",
+    "name": "〜らしい",
+    "level": "N4",
+    "meaning": "好像……；听说……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "らしい"}
+    ]
+  },
+  {
+    "id": "n4_sou_da",
+    "name": "〜そうだ",
+    "level": "N4",
+    "meaning": "听说……；看起来……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "そうだ"}
+    ]
+  },
+  {
+    "id": "n4_youda",
+    "name": "〜ようだ",
+    "level": "N4",
+    "meaning": "好像……；似乎……",
+    "pattern": [
+      {"pos": "名詞", "surface": "よう"},
+      {"pos": "助動詞", "surface": "だ"}
+    ]
+  },
+  {
+    "id": "n4_mitai",
+    "name": "〜みたい",
+    "level": "N4",
+    "meaning": "好像……；像……一样",
+    "pattern": [
+      {"pos": "助動詞", "surface": "みたい"}
+    ]
+  },
+  {
+    "id": "n4_kurai",
+    "name": "〜くらい",
+    "level": "N4",
+    "meaning": "大约……；程度",
+    "pattern": [
+      {"pos": "助詞", "surface": "くらい"}
+    ]
+  },
+  {
+    "id": "n4_gurai",
+    "name": "〜ぐらい",
+    "level": "N4",
+    "meaning": "大约……；程度（口语）",
+    "pattern": [
+      {"pos": "助詞", "surface": "ぐらい"}
+    ]
+  },
+  {
+    "id": "n4_dake",
+    "name": "〜だけ",
+    "level": "N4",
+    "meaning": "只……；仅……",
+    "pattern": [
+      {"pos": "助詞", "surface": "だけ"}
+    ]
+  },
+  {
+    "id": "n4_ka_mo",
+    "name": "〜かもしれない",
+    "level": "N4",
+    "meaning": "也许……；可能……",
+    "pattern": [
+      {"pos": "助詞", "surface": "か"},
+      {"pos": "助詞", "surface": "も"},
+      {"pos": "助動詞", "surface": "しれない"}
+    ]
+  },
+  {
+    "id": "n3_koto",
+    "name": "〜こと",
+    "level": "N3",
+    "meaning": "……（名词化）",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"}
+    ]
+  },
+  {
+    "id": "n3_no",
+    "name": "〜の",
+    "level": "N3",
+    "meaning": "……（名词化，口语）",
+    "pattern": [
+      {"pos": "名詞", "surface": "の"}
+    ]
+  },
+  {
+    "id": "n3_to_omou",
+    "name": "〜と思う",
+    "level": "N3",
+    "meaning": "我认为……；觉得……",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"},
+      {"pos": "動詞", "lemma": "思う"}
+    ]
+  },
+  {
+    "id": "n3_to_iu",
+    "name": "〜という",
+    "level": "N3",
+    "meaning": "叫做……；说是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"},
+      {"pos": "動詞", "lemma": "いう"}
+    ]
+  },
+  {
+    "id": "n3_tame_ni",
+    "name": "〜ために",
+    "level": "N3",
+    "meaning": "为了……",
+    "pattern": [
+      {"pos": "名詞", "surface": "ため"},
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n3_youni_naru",
+    "name": "〜ようになる",
+    "level": "N3",
+    "meaning": "变得……；能够……",
+    "pattern": [
+      {"pos": "名詞", "surface": "よう"},
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "なる"}
+    ]
+  },
+  {
+    "id": "n3_koto_ni_suru",
+    "name": "〜ことにする",
+    "level": "N3",
+    "meaning": "决定……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "する"}
+    ]
+  },
+  {
+    "id": "n3_koto_ga_aru",
+    "name": "〜ことがある",
+    "level": "N3",
+    "meaning": "有过……的经历",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "動詞", "lemma": "ある"}
+    ]
+  },
+  {
+    "id": "n3_koto_ni_naru",
+    "name": "〜ことになる",
+    "level": "N3",
+    "meaning": "决定……；变成……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "なる"}
+    ]
+  },
+  {
+    "id": "n3_nagara",
+    "name": "〜ながら",
+    "level": "N3",
+    "meaning": "一边……一边……；虽然……但是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "ながら"}
+    ]
+  },
+  {
+    "id": "n3_zutsu",
+    "name": "〜ずつ",
+    "level": "N3",
+    "meaning": "每……；依次……",
+    "pattern": [
+      {"pos": "助詞", "surface": "ずつ"}
+    ]
+  },
+  {
+    "id": "n3_made_ni",
+    "name": "〜までに",
+    "level": "N3",
+    "meaning": "在……之前",
+    "pattern": [
+      {"pos": "助詞", "surface": "までに"}
+    ]
+  },
+  {
+    "id": "n3_to_ki",
+    "name": "〜ときに",
+    "level": "N3",
+    "meaning": "在……时候",
+    "pattern": [
+      {"pos": "名詞", "surface": "とき"},
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n3_ni_shite",
+    "name": "〜にして",
+    "level": "N3",
+    "meaning": "在……；到……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "助詞", "surface": "して"}
+    ]
+  },
+  {
+    "id": "n3_kurai_gurai",
+    "name": "〜くらい〜ぐらい",
+    "level": "N3",
+    "meaning": "大约……左右",
+    "pattern": [
+      {"pos": "助詞", "surface": "くらい"},
+      {"pos": "助詞", "surface": "ぐらい"}
+    ]
+  },
+  {
+    "id": "n3_hodo",
+    "name": "〜ほど",
+    "level": "N3",
+    "meaning": "程度；越……越……",
+    "pattern": [
+      {"pos": "名詞", "surface": "ほど"}
+    ]
+  },
+  {
+    "id": "n3_sae",
+    "name": "〜さえ",
+    "level": "N3",
+    "meaning": "连……；甚至……",
+    "pattern": [
+      {"pos": "助詞", "surface": "さえ"}
+    ]
+  },
+  {
+    "id": "n3_shika",
+    "name": "〜しか",
+    "level": "N3",
+    "meaning": "只……（后接否定）",
+    "pattern": [
+      {"pos": "助詞", "surface": "しか"}
+    ]
+  },
+  {
+    "id": "n3_kiri",
+    "name": "〜きり",
+    "level": "N3",
+    "meaning": "只……；……之后一直没……",
+    "pattern": [
+      {"pos": "助詞", "surface": "きり"}
+    ]
+  },
+  {
+    "id": "n3_bakari",
+    "name": "〜ばかり",
+    "level": "N3",
+    "meaning": "光……；净……；刚……",
+    "pattern": [
+      {"pos": "助詞", "surface": "ばかり"}
+    ]
+  },
+  {
+    "id": "n3_mama",
+    "name": "〜まま",
+    "level": "N3",
+    "meaning": "保持……状态",
+    "pattern": [
+      {"pos": "名詞", "surface": "まま"}
+    ]
+  },
+  {
+    "id": "n3_hou_ga_ii",
+    "name": "〜ほうがいい",
+    "level": "N3",
+    "meaning": "最好……",
+    "pattern": [
+      {"pos": "名詞", "surface": "ほう"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "形容詞", "lemma": "いい"}
+    ]
+  },
+  {
+    "id": "n3_temii",
+    "name": "〜てみる",
+    "level": "N3",
+    "meaning": "试着……",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"},
+      {"pos": "動詞", "lemma": "みる"}
+    ]
+  },
+  {
+    "id": "n3_te_shimau",
+    "name": "〜てしまう",
+    "level": "N3",
+    "meaning": "完全……；不小心……",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"},
+      {"pos": "動詞", "lemma": "しまう"}
+    ]
+  },
+  {
+    "id": "n3_te_kureru",
+    "name": "〜てくれる",
+    "level": "N3",
+    "meaning": "为我……",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"},
+      {"pos": "動詞", "lemma": "くれる"}
+    ]
+  },
+  {
+    "id": "n3_te_morau",
+    "name": "〜てもらう",
+    "level": "N3",
+    "meaning": "请（别人）为我……",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"},
+      {"pos": "動詞", "lemma": "もらう"}
+    ]
+  },
+  {
+    "id": "n3_saseru",
+    "name": "〜させる",
+    "level": "N3",
+    "meaning": "让……；使……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "させる"}
+    ]
+  },
+  {
+    "id": "n3_saserareru",
+    "name": "〜させられる",
+    "level": "N3",
+    "meaning": "被迫……；不得不……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "させられる"}
+    ]
+  },
+  {
+    "id": "n3_reru_rareru",
+    "name": "〜れる・られる",
+    "level": "N3",
+    "meaning": "被……；能……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "れる"}
+    ]
+  },
+  {
+    "id": "n2_ni_shite_wa",
+    "name": "〜にしては",
+    "level": "N2",
+    "meaning": "就……来说；作为……来说",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "助詞", "surface": "して"},
+      {"pos": "助詞", "surface": "は"}
+    ]
+  },
+  {
+    "id": "n2_ni_suginai",
+    "name": "〜に過ぎない",
+    "level": "N2",
+    "meaning": "只不过是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "過ぎる"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n2_wake_ga_nai",
+    "name": "〜わけがない",
+    "level": "N2",
+    "meaning": "不可能……；不会……",
+    "pattern": [
+      {"pos": "名詞", "surface": "わけ"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n2_wake_de_wa_nai",
+    "name": "〜わけではない",
+    "level": "N2",
+    "meaning": "并非……；并不是……",
+    "pattern": [
+      {"pos": "名詞", "surface": "わけ"},
+      {"pos": "助詞", "surface": "では"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n2_koto_wa_nai",
+    "name": "〜ことはない",
+    "level": "N2",
+    "meaning": "没必要……；不会……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "は"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n2_zutsu_ga_aru",
+    "name": "〜ずにはいられない",
+    "level": "N2",
+    "meaning": "忍不住……；不得不……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "ず"},
+      {"pos": "助詞", "surface": "には"},
+      {"pos": "動詞", "lemma": "いられる"}
+    ]
+  },
+  {
+    "id": "n2_koto_da",
+    "name": "〜ことだ",
+    "level": "N2",
+    "meaning": "应该……；真是……啊",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助動詞", "surface": "だ"}
+    ]
+  },
+  {
+    "id": "n2_koto_kara",
+    "name": "〜ことから",
+    "level": "N2",
+    "meaning": "由于……；从……来看",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "から"}
+    ]
+  },
+  {
+    "id": "n2_ni_yotte",
+    "name": "〜によって",
+    "level": "N2",
+    "meaning": "由于……；根据……；由……",
+    "pattern": [
+      {"pos": "助詞", "surface": "によって"}
+    ]
+  },
+  {
+    "id": "n2_ni_taisuru",
+    "name": "〜に対する",
+    "level": "N2",
+    "meaning": "对……；对于……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "対する"}
+    ]
+  },
+  {
+    "id": "n2_ni_okeru",
+    "name": "〜における",
+    "level": "N2",
+    "meaning": "在……方面；在……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "おく"}
+    ]
+  },
+  {
+    "id": "n2_to_shite_wa",
+    "name": "〜としては",
+    "level": "N2",
+    "meaning": "作为……来说",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"},
+      {"pos": "動詞", "lemma": "する"},
+      {"pos": "助詞", "surface": "は"}
+    ]
+  },
+  {
+    "id": "n2_to_itte_wa",
+    "name": "〜といっては",
+    "level": "N2",
+    "meaning": "如果说……",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"},
+      {"pos": "動詞", "lemma": "いう"},
+      {"pos": "助詞", "surface": "は"}
+    ]
+  },
+  {
+    "id": "n2_ni_watatte",
+    "name": "〜にわたって",
+    "level": "N2",
+    "meaning": "涉及……；长达……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "わたる"}
+    ]
+  },
+  {
+    "id": "n2_wo_tooshite",
+    "name": "〜を通して",
+    "level": "N2",
+    "meaning": "通过……；透过……",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "名詞", "surface": "通し"},
+      {"pos": "助詞", "surface": "て"}
+    ]
+  },
+  {
+    "id": "n2_wo_chuushin_ni",
+    "name": "〜を中心に",
+    "level": "N2",
+    "meaning": "以……为中心",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "名詞", "surface": "中心"},
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n2_ni_yoru_to",
+    "name": "〜によると",
+    "level": "N2",
+    "meaning": "根据……；据……所说",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "よる"},
+      {"pos": "助詞", "surface": "と"}
+    ]
+  },
+  {
+    "id": "n2_kagiri",
+    "name": "〜かぎり",
+    "level": "N2",
+    "meaning": "只要……；除非……",
+    "pattern": [
+      {"pos": "名詞", "surface": "かぎり"}
+    ]
+  },
+  {
+    "id": "n2_urai",
+    "name": "〜うらない",
+    "level": "N2",
+    "meaning": "要不是……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "うらない"}
+    ]
+  },
+  {
+    "id": "n2_majii",
+    "name": "〜まじき",
+    "level": "N2",
+    "meaning": "不应该……",
+    "pattern": [
+      {"pos": "助動詞", "surface": "まじき"}
+    ]
+  },
+  {
+    "id": "n2_chuu",
+    "name": "〜中",
+    "level": "N2",
+    "meaning": "正在……中；……期间",
+    "pattern": [
+      {"pos": "名詞", "surface": "中"}
+    ]
+  },
+  {
+    "id": "n1_ni_hakanai",
+    "name": "〜に堪えない",
+    "level": "N1",
+    "meaning": "不胜……；不禁……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "堪える"}
+    ]
+  },
+  {
+    "id": "n1_wo_kinshi",
+    "name": "〜を禁じ得ない",
+    "level": "N1",
+    "meaning": "不禁……",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "動詞", "lemma": "禁じる"}
+    ]
+  },
+  {
+    "id": "n1_ni_taeru",
+    "name": "〜に耐える",
+    "level": "N1",
+    "meaning": "值得……；忍受……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "耐える"}
+    ]
+  },
+  {
+    "id": "n1_wo_kakete",
+    "name": "〜をかけて",
+    "level": "N1",
+    "meaning": "赌上……；用尽……",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "動詞", "lemma": "かける"}
+    ]
+  },
+  {
+    "id": "n1_ni_amatta",
+    "name": "〜に余る",
+    "level": "N1",
+    "meaning": "绰绰有余……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "余る"}
+    ]
+  },
+  {
+    "id": "n1_wo_tsuujite",
+    "name": "〜を通して",
+    "level": "N1",
+    "meaning": "通过……；贯穿……",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "名詞", "surface": "通し"},
+      {"pos": "助詞", "surface": "て"}
+    ]
+  },
+  {
+    "id": "n1_ni_souii",
+    "name": "〜に相違ない",
+    "level": "N1",
+    "meaning": "一定……；肯定……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "名詞", "surface": "相違"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n1_ni_chigainai",
+    "name": "〜に違いない",
+    "level": "N1",
+    "meaning": "一定……；肯定……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "名詞", "surface": "違い"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n1_ni_ha_chigainai",
+    "name": "〜には違いない",
+    "level": "N1",
+    "meaning": "确实……；一定……",
+    "pattern": [
+      {"pos": "助詞", "surface": "には"},
+      {"pos": "名詞", "surface": "違い"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n1_koto_zanzen_nai",
+    "name": "〜こと存ぜぬ",
+    "level": "N1",
+    "meaning": "不知道……（谦逊语）",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "動詞", "lemma": "存ぜぬ"}
+    ]
+  },
+  {
+    "id": "n1_ni_kanawanai",
+    "name": "〜にかなわない",
+    "level": "N1",
+    "meaning": "比不上……；不如……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "かなわない"}
+    ]
+  },
+  {
+    "id": "n1_wo_hajime",
+    "name": "〜をはじめ",
+    "level": "N1",
+    "meaning": "以……为首；以……为代表",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "動詞", "lemma": "始める"}
+    ]
+  },
+  {
+    "id": "n1_ni_wataru",
+    "name": "〜にわたる",
+    "level": "N1",
+    "meaning": "涉及……；长达……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "わたる"}
+    ]
+  },
+  {
+    "id": "n1_ni_souyau",
+    "name": "〜に相違ない",
+    "level": "N1",
+    "meaning": "一定……；肯定……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "名詞", "surface": "相違"}
+    ]
+  },
+  {
+    "id": "n1_tei_do",
+    "name": "〜てやまない",
+    "level": "N1",
+    "meaning": "非常……；……不已",
+    "pattern": [
+      {"pos": "助詞", "surface": "て"},
+      {"pos": "動詞", "lemma": "やまない"}
+    ]
+  },
+  {
+    "id": "n1_koto_nashi_ni",
+    "name": "〜ことなく",
+    "level": "N1",
+    "meaning": "不……而……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "なく"}
+    ]
+  },
+  {
+    "id": "n1_wo_komi",
+    "name": "〜をこめて",
+    "level": "N1",
+    "meaning": "充满……；怀着……",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "動詞", "lemma": "こめる"}
+    ]
+  },
+  {
+    "id": "n1_ni_tomo",
+    "name": "〜に伴い",
+    "level": "N1",
+    "meaning": "随着……；伴随……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "伴う"}
+    ]
+  },
+  {
+    "id": "n1_wo_fukume",
+    "name": "〜を含め",
+    "level": "N1",
+    "meaning": "包括……在内",
+    "pattern": [
+      {"pos": "助詞", "surface": "を"},
+      {"pos": "動詞", "lemma": "含める"}
+    ]
+  },
+  {
+    "id": "n1_ni_motozuku",
+    "name": "〜に基づく",
+    "level": "N1",
+    "meaning": "基于……；根据……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "基づく"}
+    ]
+  }
+]
