@@ -1,0 +1,149 @@
+[
+  {
+    "id": "n5_desu_masu",
+    "name": "〜です/ます",
+    "level": "N5",
+    "meaning": "礼貌体结尾",
+    "pattern": [
+      {"pos": "助動詞", "surface": "です"},
+      {"pos": "助動詞", "surface": "ます"}
+    ]
+  },
+  {
+    "id": "n5_ta_form",
+    "name": "〜た",
+    "level": "N5",
+    "meaning": "过去式",
+    "pattern": [
+      {"pos": "助動詞", "surface": "た"}
+    ]
+  },
+  {
+    "id": "n5_nai_form",
+    "name": "〜ない",
+    "level": "N5",
+    "meaning": "否定形式",
+    "pattern": [
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n4_node",
+    "name": "〜ので",
+    "level": "N4",
+    "meaning": "因为……所以……",
+    "pattern": [
+      {"pos": "助詞", "surface": "ので"}
+    ]
+  },
+  {
+    "id": "n4_kara",
+    "name": "〜から",
+    "level": "N4",
+    "meaning": "因为……（主观原因）",
+    "pattern": [
+      {"pos": "助詞", "surface": "から"}
+    ]
+  },
+  {
+    "id": "n4_tari",
+    "name": "〜たり〜たり",
+    "level": "N4",
+    "meaning": "又……又……",
+    "pattern": [
+      {"pos": "助詞", "surface": "たり"}
+    ]
+  },
+  {
+    "id": "n4_nakereba",
+    "name": "〜なければならない",
+    "level": "N3",
+    "meaning": "必须……",
+    "pattern": [
+      {"pos": "助動詞", "conj": "仮定形"},
+      {"pos": "助詞", "surface": "ば"},
+      {"pos": "動詞", "lemma": "なる"}
+    ]
+  },
+  {
+    "id": "n3_koto_ga_dekiru",
+    "name": "〜ことができる",
+    "level": "N3",
+    "meaning": "能够……",
+    "pattern": [
+      {"pos": "名詞", "surface": "こと"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "動詞", "lemma": "できる"}
+    ]
+  },
+  {
+    "id": "n3_tame",
+    "name": "〜ため",
+    "level": "N3",
+    "meaning": "为了……；因为……",
+    "pattern": [
+      {"pos": "名詞", "surface": "ため"}
+    ]
+  },
+  {
+    "id": "n3_youni",
+    "name": "〜ように",
+    "level": "N3",
+    "meaning": "为了……；像……一样",
+    "pattern": [
+      {"pos": "名詞", "surface": "よう"},
+      {"pos": "助詞", "surface": "に"}
+    ]
+  },
+  {
+    "id": "n3_to_omou",
+    "name": "〜と思う",
+    "level": "N3",
+    "meaning": "我认为……",
+    "pattern": [
+      {"pos": "助詞", "surface": "と"},
+      {"pos": "動詞", "lemma": "思う"}
+    ]
+  },
+  {
+    "id": "n3_kurai",
+    "name": "〜くらい/ぐらい",
+    "level": "N3",
+    "meaning": "大约……；程度",
+    "pattern": [
+      {"pos": "助詞", "surface": "くらい"}
+    ]
+  },
+  {
+    "id": "n2_ni_shite",
+    "name": "〜にして",
+    "level": "N2",
+    "meaning": "在……；到……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "助詞", "surface": "して"}
+    ]
+  },
+  {
+    "id": "n2_wake_ga_nai",
+    "name": "〜わけがない",
+    "level": "N2",
+    "meaning": "不可能……",
+    "pattern": [
+      {"pos": "名詞", "surface": "わけ"},
+      {"pos": "助詞", "surface": "が"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  },
+  {
+    "id": "n1_ni_suginai",
+    "name": "〜に過ぎない",
+    "level": "N1",
+    "meaning": "只不过是……",
+    "pattern": [
+      {"pos": "助詞", "surface": "に"},
+      {"pos": "動詞", "lemma": "過ぎる"},
+      {"pos": "助動詞", "surface": "ない"}
+    ]
+  }
+]

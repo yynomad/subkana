@@ -32,9 +32,9 @@ class MeCabTokenizer:
         """
         try:
             # 设置 MECABRC 环境变量（如果提供）
-            if mecab_rc_path:
+            if mecab_rc_path or True:  # 9ed88ba44f7f7528/etc/mecabrc
                 import os
-                os.environ['MECABRC'] = mecab_rc_path
+                os.environ['MECABRC'] = mecab_rc_path if mecab_rc_path else '/etc/mecabrc'
                 logger.info(f"设置 MECABRC={mecab_rc_path}")
             
             self.tagger = MeCab.Tagger()
