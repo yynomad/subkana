@@ -5347,23 +5347,38 @@
   },
   {
     "id": "n4_0244",
-    "name": "～なければ ならない (〜nakereba naranai)",
+    "name": "～なければならない",
     "level": "N4",
-    "meaning": "Express obligation or necessity; 'must', 'have to', 'need to'.",
-    "formation": "Verb-ない form + なければ ならない",
+    "meaning": "必须……，不得不……",
+    "formation": "动词未然形 + なければならない",
     "pattern": [
       {
-        "surface": "～なければ ならない (〜nakereba naranai)"
+        "pos": "動詞",
+        "conj": "未然形"
+      },
+      {
+        "pos": "助動詞",
+        "conj": "仮定形"
+      },
+      {
+        "pos": "助詞"
+      },
+      {
+        "pos": "動詞",
+        "conj": "未然形"
+      },
+      {
+        "pos": "助動詞"
       }
     ],
     "examples": [
       {
-        "japanese": "宿題をやらなければならない。",
-        "english": "I have to do my homework."
+        "japanese": "行かなければならない",
+        "english": "I have to go."
       },
       {
-        "japanese": "明日までにこの本を読まなければならない。",
-        "english": "I have to read this book by tomorrow."
+        "japanese": "勉強しなければならない",
+        "english": "I have to study."
       }
     ]
   },
@@ -18212,6 +18227,46 @@
       {
         "japanese": "息子が成功した。嬉しい限りだ。",
         "english": "My son succeeded. I'm so happy."
+      }
+    ]
+  },
+  {
+    "id": "n4_nakereba_narimasen",
+    "name": "～なければなりません",
+    "level": "N4",
+    "meaning": "必须……，不得不……（敬语）",
+    "formation": "动词未然形 + なければなりません",
+    "pattern": [
+      {
+        "pos": "動詞",
+        "conj": "未然形"
+      },
+      {
+        "pos": "助動詞",
+        "conj": "仮定形"
+      },
+      {
+        "pos": "助詞"
+      },
+      {
+        "pos": "動詞",
+        "conj": "連用形"
+      },
+      {
+        "pos": "助動詞"
+      },
+      {
+        "pos": "助動詞"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "行かなければなりません",
+        "english": "I have to go."
+      },
+      {
+        "japanese": "勉強しなければなりません",
+        "english": "I have to study."
       }
     ]
   }
