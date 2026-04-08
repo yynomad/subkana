@@ -11,6 +11,7 @@ MeCabTokenizer - 封装 MeCab 形态素分析器
 """
 
 import MeCab
+import os
 from typing import List
 import logging
 
@@ -32,10 +33,21 @@ class MeCabTokenizer:
         """
         try:
             # 设置 MECABRC 环境变量（如果提供）
-            if mecab_rc_path or True:  # 9ed88ba44f7f7528/etc/mecabrc
-                import os
-                os.environ['MECABRC'] = mecab_rc_path if mecab_rc_path else '/etc/mecabrc'
+            if mecab_rc_path:
+                os.environ['MECABRC'] = mecab_rc_path
                 logger.info(f"设置 MECABRC={mecab_rc_path}")
+            elif 'MECABRC' not in os.environ:
+                # 默认查找常见位置
+                possible_paths = [
+                    '/opt/homebrew/etc/mecabrc',  # macOS Homebrew
+                    '/usr/local/etc/mecabrc',    # macOS/Homebrew legacy
+                    '/etc/mecabrc'               # Linux
+                ]
+                for path in possible_paths:
+                    if os.path.exists(path):
+                        os.environ['MECABRC'] = path
+                        logger.info(f"设置 MECABRC={path}")
+                        break
             
             self.tagger = MeCab.Tagger()
             logger.info(f"MeCab 初始化成功，词典类型: {dict_type}")
