@@ -1,20 +1,18 @@
 """
 FastAPI 应用主入口
 
-为什么对前端只暴露一个 /analyze 接口：
-1. 简化前端调用：一次请求获取所有信息（句型+词汇等级）
-2. 减少网络往返：避免多次请求（tokenize + grammar + vocabulary）
-3. 保证数据一致性：所有分析基于同一份形态素分析结果
-4. 便于后续扩展：可以在后端统一处理缓存、优化等逻辑
+项目定位：日语字幕学习分析工具，而不是普通翻译工具。
+前端只需要调用 /analyze，一次获得：
+1. 面向学习者的自然翻译
+2. 句式/语法拆分
+3. 重点单词、JLPT 等级、读音和语气说明
 
-后续扩展方向：
-1. 增加 N3/N2/N1 句型：在 grammar_rules.json 中添加新规则即可
-2. 支持前端 hover 高亮：span 字段已提供字符位置，前端可直接使用
-3. 多句型冲突处理：当前返回所有匹配，可添加优先级或去重逻辑
+当前分析逻辑完全依靠大模型生成，旧版本地语法规则库和单词库仅作为历史兼容文件保留。
 """
 
-import os
 from contextlib import asynccontextmanager
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -24,23 +22,8 @@ from app.api.routes import router
 from app.middleware import LoggingMiddleware
 from app.logging_config import setup_logging
 
-# 设置 MeCab 环境变量（macOS Homebrew 兼容性）
-if os.name == 'posix':  # Unix-like systems
-    possible_mecabrc_paths = [
-        '/etc/mecabrc',  # Linux/WSL
-        '/usr/local/etc/mecabrc',    # macOS/Homebrew legacy
-        '/etc/mecabrc',              # Linux
-    ]
-
-    for path in possible_mecabrc_paths:
-        if os.path.exists(path):
-            os.environ['MECABRC'] = path
-            print(f"设置 MECABRC={path}")
-            break
-
 # 配置日志
 setup_logging()
-import logging
 logger = logging.getLogger(__name__)
 
 
@@ -51,9 +34,9 @@ async def lifespan(app: FastAPI):
     logger.info("初始化服务...")
     init_services()
     logger.info("服务初始化完成")
-    
+
     yield
-    
+
     # 关闭时清理资源
     logger.info("应用关闭，清理资源...")
 
@@ -64,7 +47,7 @@ settings = get_settings()
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="基于 MeCab 的日语句子分析 API，提供句型结构和单词等级分析",
+    description="基于大模型的日语字幕学习分析 API，提供翻译、句式拆分和重点单词说明",
     lifespan=lifespan,
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
@@ -86,6 +69,7 @@ if settings.DEBUG:
 # 注册路由
 app.include_router(router)
 
+
 # 根路径
 @app.get("/")
 async def root():
@@ -95,6 +79,3 @@ async def root():
         "version": settings.APP_VERSION,
         "status": "running"
     }
-
-
-
