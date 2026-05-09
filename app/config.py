@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     """应用配置"""
     
     # 应用基础配置
-    APP_NAME: str = "Japanese Sentence Analysis API"
+    APP_NAME: str = "Japanese Subtitle Learning Analysis API"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     ENVIRONMENT: str = "development"  # development, production, testing
@@ -33,13 +33,18 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
     LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
-    # 文件路径配置
-    GRAMMAR_RULES_FILE: str = "data/grammar_rules_complete.json"  # 完整的 N5-N1 语法规则
+    # 大模型配置（OpenAI 兼容 Chat Completions 接口）
+    LLM_API_KEY: str | None = None
+    LLM_BASE_URL: str = "https://api.openai.com/v1"
+    LLM_MODEL: str = "gpt-4o-mini"
+    LLM_TIMEOUT: int = 60
+    LLM_TEMPERATURE: float = 0.2
+
+    # 旧版本地规则/词库配置（保留文件与配置项，便于历史数据迁移）
+    GRAMMAR_RULES_FILE: str = "data/grammar_rules_complete.json"
     VOCABULARY_LEVELS_FILE: str = "data/vocabulary_levels.json"
-    
-    # MeCab 配置
-    MECAB_DICT_TYPE: str = "ipadic"  # ipadic, unidic, etc.
-    MECAB_RC_PATH: str = "/etc/mecabrc"  # MeCab 配置文件路径
+    MECAB_DICT_TYPE: str = "ipadic"
+    MECAB_RC_PATH: str = "/etc/mecabrc"
     
     model_config = SettingsConfigDict(
         env_file=".env",
