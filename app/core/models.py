@@ -97,6 +97,6 @@ class AnalyzeResponse(BaseModel):
 
     sentence: str
     target_language: LearningLanguage = "zh"
-    analysis: LearningAnalysis
+    analysis: Optional[LearningAnalysis] = None
     grammar_patterns: List[GrammarPattern] = Field(default_factory=list)
     tokens: List[Token] = Field(default_factory=list)

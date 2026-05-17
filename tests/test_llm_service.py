@@ -40,10 +40,11 @@ class FakeLLMClient:
 
 
 class AnalysisServiceTest(unittest.TestCase):
-    def test_llm_analysis_is_returned_with_legacy_fields(self):
-        service = AnalysisService(FakeLLMClient())
+    def test_ai_analysis_returns_full_response(self):
+        """AI 分析返回完整的 analysis + legacy 字段"""
+        service = AnalysisService(llm_client=FakeLLMClient())
 
-        response = service.analyze("なめてしまいました", "zh")
+        response = service.analyze_with_ai("なめてしまいました", "zh")
 
         self.assertEqual(response.target_language, "zh")
         self.assertEqual(response.analysis.translation.text, "低估了对手。")
@@ -51,6 +52,31 @@ class AnalysisServiceTest(unittest.TestCase):
         self.assertEqual(response.analysis.vocabulary[0].lemma, "なめる")
         self.assertEqual(response.grammar_patterns[0].name, "〜てしまう")
         self.assertEqual(response.tokens[0].surface, "なめて")
+
+    def test_local_analysis_returns_tokens_and_grammar(self):
+        """本地分析返回 tokens 和 grammar_patterns，analysis 为 None"""
+        from app.core.tokenizer import MeCabTokenizer
+        from app.core.grammar_engine_optimized import GrammarRuleEngine
+        from app.core.vocabulary import VocabularyLevelMapper
+
+        tokenizer = MeCabTokenizer()
+        grammar_engine = GrammarRuleEngine(rules_file="data/grammar_rules_complete.json")
+        vocab = VocabularyLevelMapper(vocabulary_file="data/vocabulary_levels.json")
+
+        service = AnalysisService(
+            tokenizer=tokenizer,
+            grammar_engine=grammar_engine,
+            vocabulary_mapper=vocab,
+        )
+
+        response = service.analyze_local("行かなければなりません", "zh")
+
+        self.assertEqual(response.sentence, "行かなければなりません")
+        self.assertIsNone(response.analysis)
+        self.assertGreater(len(response.tokens), 0)
+        # 验证 token 被词汇表 enriched
+        enriched = [t for t in response.tokens if t.jlpt_level]
+        self.assertGreater(len(enriched), 0)
 
 
 if __name__ == "__main__":

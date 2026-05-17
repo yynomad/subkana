@@ -33,6 +33,13 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
     LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
+    # 缓存配置
+    CACHE_ENABLED: bool = True
+    CACHE_TTL: int = 300  # 缓存生存时间（秒），默认 5 分钟
+    CACHE_MAX_SIZE: int = 1000  # 最大缓存条目数
+    CACHE_NAMESPACE_LOCAL: str = "local_analysis"
+    CACHE_NAMESPACE_AI: str = "ai_analysis"
+
     # 大模型配置（OpenAI 兼容 Chat Completions 接口）
     LLM_API_KEY: str | None = None
     LLM_BASE_URL: str = "https://api.openai.com/v1"

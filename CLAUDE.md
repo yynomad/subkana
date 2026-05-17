@@ -4,219 +4,155 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Subkana is a Japanese sentence analysis backend API built with FastAPI. It analyzes Japanese sentences by:
-- Performing morphological analysis using MeCab
-- Identifying grammar patterns based on JLPT levels (N5, N4, N3)
-- Mapping vocabulary to JLPT levels
-- Returning structured analysis results via a single REST endpoint
+Subkana is a Japanese sentence analysis backend API built with FastAPI. It provides two analysis modes:
 
-The application is designed as a backend service for browser extensions and other clients that need Japanese language analysis.
+- **Local analysis** (`POST /api/v1/analyze`) — Fast, no API key needed. Uses MeCab morphology + grammar rule matching + vocabulary lookup. Returns tokens with JLPT levels and matched grammar patterns. Response time: ~15ms.
+- **AI analysis** (`POST /api/v1/analyze/ai`) — Deep LLM analysis for when the user wants translation, sentence breakdowns, nuanced explanations, and learning notes. Requires `LLM_API_KEY`. Response time: 1-5s.
+
+Both endpoints share the same `AnalyzeResponse` shape: `analysis` field is `null` for local, populated for AI. `tokens` and `grammar_patterns` are always present.
 
 ## Development Commands
 
 ### Running the Server
 
 ```bash
+# Install dependencies
+pip install -r requirements.txt
+
 # Development mode with auto-reload
 uvicorn app.main:app --reload
 
-# Alternative startup script (includes MeCab compatibility setup)
+# Alternative startup script
 python main.py
 
 # Custom port
 uvicorn app.main:app --reload --port 8080
 
-# Production mode (no API docs)
+# Production
 DEBUG=false uvicorn app.main:app --host 0.0.0.0 --port $PORT
 ```
 
-### Environment Setup
+### MeCab (Required for Local Analysis)
 
 ```bash
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Verify MeCab installation
-mecab --version
-echo "テスト" | mecab
-```
-
-### MeCab Installation (Required System Dependency)
-
-**macOS:**
-```bash
+# macOS
 brew install mecab mecab-ipadic
-```
 
-**Ubuntu/Debian:**
-```bash
+# Ubuntu/Debian
 sudo apt-get install mecab libmecab-dev mecab-ipadic-utf8
 ```
 
-**Docker:** Automatically installed via Dockerfile
+### Running Tests
+
+```bash
+# All tests
+python -m unittest tests.test_llm_service -v
+
+# Integration test (requires running server + LLM_API_KEY)
+python test_api.py
+```
 
 ### Testing the API
 
 ```bash
-# Health check
-curl http://localhost:8000/api/v1/health
-
-# Analyze a sentence
+# Local analysis (no API key needed)
 curl -X POST "http://localhost:8000/api/v1/analyze" \
   -H "Content-Type: application/json" \
   -d '{"sentence": "行かなければなりません"}'
 
-# Access API docs (only in DEBUG mode)
-open http://localhost:8000/docs
+# AI analysis (needs LLM_API_KEY configured)
+curl -X POST "http://localhost:8000/api/v1/analyze/ai" \
+  -H "Content-Type: application/json" \
+  -d '{"sentence": "なめてしまいました", "target_language": "zh"}'
+
+# Health check
+curl http://localhost:8000/api/v1/health
 ```
 
-### Docker Deployment
+### Docker
 
 ```bash
-# Build
 docker build -t subkana .
-
-# Run
-docker run -p 8000:8000 subkana
+docker run -p 8080:8080 -e LLM_API_KEY=your_key subkana
 ```
 
 ## Architecture
 
-### Core Design Principle
-
-The application is built around a **single unified analysis endpoint** (`/analyze`) rather than separate endpoints for tokenization, grammar matching, and vocabulary lookup. This design ensures:
-- All analysis is based on the same morphological analysis result
-- Reduced network round-trips for clients
-- Simplified frontend integration
-- Easier caching and optimization
-
 ### Data Flow
 
 ```
-Client Request → FastAPI Route → AnalysisService
-                                    ↓
-                            ┌───────────────┐
-                            │ MeCabTokenizer│ → Morphological analysis
-                            └───────────────┘
-                                    ↓
-                    ┌───────────────────────────────┐
-                    │  GrammarRuleEngine +          │
-                    │  VocabularyLevelMapper        │
-                    └───────────────────────────────┘
-                                    ↓
-                            AnalyzeResponse
-                                    ↓
-                            JSON Response
+POST /api/v1/analyze          POST /api/v1/analyze/ai
+(local — fast, no key)        (AI — deep, needs key)
+        ↓                              ↓
+  MeCabTokenizer                 LLMAnalysisClient
+        ↓                              ↓
+  VocabularyLevelMapper        OpenAI-compatible API
+        ↓                              ↓
+  GrammarRuleEngine             LearningAnalysis
+        ↓                              ↓
+  AnalyzeResponse              AnalyzeResponse
+  ├── analysis: null           ├── analysis: {...}
+  ├── tokens: [...]            ├── tokens: [...]
+  └── grammar_patterns: [...]  └── grammar_patterns: [...]
 ```
 
-### Key Components
+### Key Files
 
-**app/main.py** - FastAPI application entry point
-- Configures CORS (important for browser extension compatibility)
-- Sets up middleware and logging
-- Auto-detects MeCab paths for macOS Homebrew
-
-**app/core/service.py** - AnalysisService
-- Orchestrates the three-step analysis pipeline:
-  1. Tokenization via MeCabTokenizer
-  2. Grammar pattern matching via GrammarRuleEngine
-  3. Vocabulary level mapping via VocabularyLevelMapper
-- Calculates character positions (spans) for frontend highlighting
-
-**app/core/tokenizer.py** - MeCabTokenizer
-- Wrapper around MeCab morphological analyzer
-- Returns Token objects with: surface, lemma (dictionary form), conj (conjugation form), pos (part of speech)
-
-**app/core/grammar_engine.py** - GrammarRuleEngine
-- Uses sliding window algorithm to match grammar patterns
-- Patterns are defined in JSON files (not code)
-- Supports multiple pattern matches in a single sentence
-- Each rule specifies: id, name, level, meaning, pattern
-
-**app/core/vocabulary.py** - VocabularyLevelMapper
-- Maps token lemmas to JLPT levels (N5, N4, N3)
-- Data loaded from JSON file
-
-### Configuration
-
-All configuration is managed through environment variables using pydantic-settings:
-- `PORT` - Server port (default: 8000)
-- `DEBUG` - Enable API docs and detailed logging (default: false)
-- `CORS_ORIGINS` - Allowed origins for CORS (default: ["*"])
-- `GRAMMAR_RULES_FILE` - Path to grammar rules JSON (default: data/grammar_rules.json)
-- `VOCABULARY_LEVELS_FILE` - Path to vocabulary levels JSON (default: data/vocabulary_levels.json)
-
-See [app/config.py](app/config.py) for complete settings.
+| File | Role |
+|------|------|
+| [app/main.py](app/main.py) | FastAPI app, CORS, middleware, lifespan init |
+| [app/config.py](app/config.py) | All settings via env vars (pydantic-settings) |
+| [app/dependencies.py](app/dependencies.py) | Service initialization (local components + LLM client) |
+| [app/api/routes.py](app/api/routes.py) | `POST /analyze` (local), `POST /analyze/ai` (LLM), `GET /health` |
+| [app/api/models.py](app/api/models.py) | `AnalyzeRequest` (sentence + target_language) |
+| [app/core/models.py](app/core/models.py) | `AnalyzeResponse`, `Token`, `GrammarPattern`, `LearningAnalysis` (AI) |
+| [app/core/service.py](app/core/service.py) | `AnalysisService` — `analyze_local()` and `analyze_with_ai()` |
+| [app/core/tokenizer.py](app/core/tokenizer.py) | `MeCabTokenizer` — morphological analysis |
+| [app/core/grammar_engine_optimized.py](app/core/grammar_engine_optimized.py) | `GrammarRuleEngine` — pattern matching with particle skipping, conjugation variants |
+| [app/core/vocabulary.py](app/core/vocabulary.py) | `VocabularyLevelMapper` — JLPT level enrichment |
+| [app/core/llm_client.py](app/core/llm_client.py) | `LLMAnalysisClient` — OpenAI-compatible API call with structured prompt |
+| [app/middleware.py](app/middleware.py) | Request logging middleware |
 
 ### Data Files
 
-**data/grammar_rules.json** - Grammar pattern definitions
-- Currently contains 24 patterns (N5: 5, N4: 10, N3: 9)
-- Each pattern has a `pattern` array with matching conditions
-- Pattern matching conditions can use: `pos` (part of speech), `lemma` (dictionary form), `surface` (actual form), `conj` (conjugation form)
+| File | Used By | Description |
+|------|---------|-------------|
+| `data/grammar_rules_complete.json` | GrammarRuleEngine | 116 MeCab-compatible morphological rules (N5-N1) |
+| `data/vocabulary_levels.json` | VocabularyLevelMapper | 8140 words with JLPT levels, readings, meanings |
+| `data/grammar_rules.json` | _unused_ | 829 surface-only sentence templates (incompatible with engine) |
 
-**data/vocabulary_levels.json** - Vocabulary to JLPT level mapping
-- Currently contains 247 words (N5: 133, N4: 84, N3: 30)
-- Simple key-value format: {"word": "N5"}
+### Response Structure
 
-See [data/README.md](data/README.md) for detailed documentation on extending data.
+```json
+{
+  "sentence": "...",
+  "target_language": "zh",
+  "analysis": null,              // null for local, populated for AI
+  "tokens": [                    // always present
+    {"surface": "行か", "lemma": "行く", "pos": "動詞", "conj": "未然形", "jlpt_level": "N5", ...}
+  ],
+  "grammar_patterns": [          // always present
+    {"id": "n4_nakereba_naranai", "name": "〜なければならない", "level": "N4", "span": {...}, ...}
+  ]
+}
+```
 
-## Extending the System
+## Configuration
 
-### Adding New Grammar Patterns
+All via environment variables or `.env`. Required only for AI analysis:
+- `LLM_API_KEY` — API key for LLM provider
+- `LLM_BASE_URL` — default `https://api.openai.com/v1`
+- `LLM_MODEL` — default `gpt-4o-mini`
 
-1. Edit [data/grammar_rules.json](data/grammar_rules.json)
-2. Add a new rule with pattern matching conditions:
-   ```json
-   {
-     "id": "n3_new_pattern",
-     "name": "〜新句型",
-     "level": "N3",
-     "meaning": "句型含义",
-     "pattern": [
-       {"pos": "動詞"},
-       {"lemma": "特定詞", "conj": "連用形"}
-     ]
-   }
-   ```
-3. Pattern matching is based on MeCab output - test tokenization first
-
-### Adding Vocabulary
-
-1. Edit [data/vocabulary_levels.json](data/vocabulary_levels.json)
-2. Add entries in format: `{"word_form": "N5"}`
-3. Use the lemma (dictionary form) for accurate matching
-
-### MeCab Integration Notes
-
-- The app auto-detects MeCab paths for macOS Homebrew installations
-- Pattern matching relies on MeCab's part-of-speech and conjugation analysis
-- Always test patterns against actual MeCab output - the tokenizer returns all morphological features
-- Token.lemma is the dictionary form (used for vocabulary lookup)
-- Token.conj is the conjugation form (used for grammar pattern matching)
-- Token.pos is the part of speech (used for both)
-
-### Common Pitfalls
-
-1. **Pattern Matching**: Grammar patterns must match MeCab's output exactly. Use `echo "sentence" | mecab` to see the actual tokenization and features before writing patterns.
-
-2. **Character Positions**: The span calculation in AnalysisService assumes tokens appear in order. Complex sentence structures may require more sophisticated span calculation.
-
-3. **CORS**: Browser extensions need proper CORS configuration. In production, set `CORS_ORIGINS` to specific extension URLs rather than wildcard.
-
-4. **MeCab Dictionary**: The app uses IPADIC dictionary. Different dictionaries (UniDic, etc.) produce different tokenization and will break pattern matching.
+Legacy settings (used by local analysis):
+- `GRAMMAR_RULES_FILE` — default `data/grammar_rules_complete.json`
+- `VOCABULARY_LEVELS_FILE` — default `data/vocabulary_levels.json`
+- `MECAB_DICT_TYPE` — default `ipadic`
+- `MECAB_RC_PATH` — default `/etc/mecabrc`
 
 ## API Endpoints
 
-- `GET /` - Application info
-- `GET /api/v1/health` - Service health check
-- `POST /api/v1/analyze` - Main analysis endpoint (see [app/api/routes.py](app/api/routes.py))
-
-## Testing Strategy
-
-Currently no automated tests are implemented. Manual testing via curl or the Swagger UI (`/docs`) is the primary testing method.
-
-When adding tests, focus on:
-1. Tokenization accuracy for various sentence structures
-2. Grammar pattern matching edge cases (overlapping patterns, partial matches)
-3. Vocabulary lookup for different word forms (dictionary form vs conjugated)
+- `GET /` — Application info
+- `GET /api/v1/health` — Component status (tokenizer, grammar_engine, vocabulary_mapper, llm)
+- `POST /api/v1/analyze` — Local analysis (fast, no API key)
+- `POST /api/v1/analyze/ai` — AI analysis (deep, needs LLM_API_KEY)
